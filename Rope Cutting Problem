@@ -1,0 +1,30 @@
+/*
+A rope of length n is given
+We have to cut the rope into maximum number of pieces such that every piece has a length of "a" or "b" or "c" .
+
+*/
+
+public class Main
+{
+    public static int maxLen(int n,int a,int b,int c)
+    {
+        if(n==0)
+        {
+            return 0;
+        }
+        if(n<0)
+        {
+            return -1;
+        }
+        int result=Math.max(maxLen(n-a,a,b,c),Math.max(maxLen(n-b,a,b,c),maxLen(n-c,a,b,c)));
+        if(result==-1)
+        {
+            return -1;
+        }
+        return result+1;
+    }
+	public static void main(String[] args) {
+		int a=maxLen(23,11,9,12);
+		System.out.println(a);
+	}
+}
